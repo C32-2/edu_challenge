@@ -7,3 +7,7 @@ venv/
 
 # Игнорируем pycache
 __pycache__/
+
+#Игнорирование файлов конфигурации
+.env.ai
+.env.server
