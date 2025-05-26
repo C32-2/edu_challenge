@@ -21,12 +21,11 @@ class AppUserController(private val appUserService: AppUserService) {
     @GetMapping("/{id}")
     fun getUserProfile(@PathVariable id: Long): UserProfileDTO {
         val user = appUserService.findById(id)
-        return UserProfileDTO(
-            id = user.id,
-            username = user.username,
-            createdDate = user.createdAt,
-            level = user.level,
-            exp = user.exp
-        )
+        return appUserService.toDTO(user)
+    }
+
+    @GetMapping
+    fun getAllByUsername(@RequestParam username: String): List<UserProfileDTO> {
+        return appUserService.findAllByUsername(username).map { appUserService.toDTO(it) }
     }
 }
