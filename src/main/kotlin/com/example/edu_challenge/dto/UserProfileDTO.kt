@@ -1,4 +1,4 @@
-package com.example.edu_challenge.model.dto
+package com.example.edu_challenge.dto
 
 import java.time.LocalDateTime
 
