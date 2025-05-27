@@ -27,7 +27,8 @@ class AppUserService(
             username = appUser.username,
             createdDate = LocalDateTime.now(),
             level = appUser.level,
-            exp = appUser.exp
+            exp = appUser.exp,
+            role = appUser.role
         )
     }
 }

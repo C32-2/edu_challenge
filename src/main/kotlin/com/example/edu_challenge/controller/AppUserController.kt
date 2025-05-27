@@ -1,8 +1,6 @@
 package com.example.edu_challenge.controller
 
-import com.example.edu_challenge.dto.RegisterRequestDTO
 import com.example.edu_challenge.dto.UserProfileDTO
-import com.example.edu_challenge.model.AppUser
 import com.example.edu_challenge.service.AppUserService
 import org.springframework.web.bind.annotation.*
 

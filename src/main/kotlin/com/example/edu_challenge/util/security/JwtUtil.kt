@@ -1,4 +1,4 @@
-package com.example.edu_challenge.util
+package com.example.edu_challenge.util.security
 
 import com.example.edu_challenge.model.AppUser
 import io.jsonwebtoken.Jwts
@@ -7,7 +7,6 @@ import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import java.util.Date
-
 
 @Component
 class JwtUtil(@Value("\${jwt.secret}") private val secret: String) {
