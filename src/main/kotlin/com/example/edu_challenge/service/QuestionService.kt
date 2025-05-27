@@ -13,4 +13,8 @@ class QuestionService(private val questionRepository: QuestionRepository){
     fun getQuestion(id: Long): Question? {
         return questionRepository.findById(id).orElse(null);
     }
+
+    fun getQuestionsByTopic(topicId: Long): List<Question> {
+        return questionRepository.findAllByTopicId(topicId)
+    }
 }

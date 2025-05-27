@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
-@EnableMethodSecurity // ← позволяет использовать @PreAuthorize в контроллерах
+@EnableMethodSecurity
 class SecurityConfig(
     private val jwtFilter: JwtFilter
 ) {
@@ -20,15 +20,12 @@ class SecurityConfig(
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
-            .csrf { it.disable() } // отключаем CSRF (актуально для REST API)
+            .csrf { it.disable() }
             .authorizeHttpRequests { auth ->
                 auth
-                    // разрешаем login и register
                     .requestMatchers("/api/users/login", "/api/users/register").permitAll()
-                    // всё остальное — только для аутентифицированных
                     .anyRequest().authenticated()
             }
-            // добавляем фильтр JWT перед стандартной аутентификацией
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter::class.java)
 
         return http.build()

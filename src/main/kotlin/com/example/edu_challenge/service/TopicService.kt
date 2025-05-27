@@ -9,4 +9,12 @@ class TopicService(private val topicRepository: TopicRepository) {
     fun getTopic(id: Long): Topic? {
         return topicRepository.findById(id).orElse(null)
     }
+
+    fun createTopic(topic: Topic): Topic {
+        return topicRepository.save(topic)
+    }
+
+    fun getAllTopics(): List<Topic> {
+        return topicRepository.findAll()
+    }
 }

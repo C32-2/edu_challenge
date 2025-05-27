@@ -1,8 +1,8 @@
 package com.example.edu_challenge.repository
 
-import com.example.edu_challenge.model.QuestionSet
+import com.example.edu_challenge.model.Quiz
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface QuestionSetRepository : JpaRepository<QuestionSet, Long>
+interface QuizRepository : JpaRepository<Quiz, Long>
