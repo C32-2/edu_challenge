@@ -1,8 +1,13 @@
 package com.example.edu_challenge.dto
 
+import java.time.LocalDateTime
+
 data class QuizResponseDTO(
     val id: Long,
     val title: String,
-    val topic: String,
-    val questions: List<QuestionDTO>? = null
+    val topicName: String,
+    val createdAt: LocalDateTime,
+    val questionIds: List<Long>
 )
+
+

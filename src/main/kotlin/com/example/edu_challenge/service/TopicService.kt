@@ -6,15 +6,13 @@ import org.springframework.stereotype.Service
 
 @Service
 class TopicService(private val topicRepository: TopicRepository) {
-    fun getTopic(id: Long): Topic? {
-        return topicRepository.findById(id).orElse(null)
-    }
 
-    fun createTopic(topic: Topic): Topic {
-        return topicRepository.save(topic)
-    }
+    fun getTopicById(id: Long): Topic? =
+        topicRepository.findById(id).orElse(null)
 
-    fun getAllTopics(): List<Topic> {
-        return topicRepository.findAll()
-    }
+    fun createTopic(topic: Topic): Topic =
+        topicRepository.save(topic)
+
+    fun getAllTopics(): List<Topic> =
+        topicRepository.findAll()
 }

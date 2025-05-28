@@ -11,8 +11,9 @@ data class Question(
 
     val text: String,
 
-    @Column(nullable = false)
-    val topicId: Long,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "topic_id", nullable = false)
+    val topic: Topic,
 
     @ElementCollection
     val options: List<String>,
