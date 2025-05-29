@@ -24,7 +24,7 @@ class TopicController(private val topicService: TopicService) {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('EDITOR')")
+    @PreAuthorize("hasRole('EDITOR') or hasRole('ADMIN')")
     fun createTopic(@RequestBody topic: Topic): ResponseEntity<Topic> {
         val created = topicService.createTopic(topic)
         return ResponseEntity.ok(created)
