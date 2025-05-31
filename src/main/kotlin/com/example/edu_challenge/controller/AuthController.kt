@@ -4,6 +4,7 @@ import com.example.edu_challenge.dto.LoginRequestDTO
 import com.example.edu_challenge.dto.RegisterRequestDTO
 import com.example.edu_challenge.model.AppUser
 import com.example.edu_challenge.service.AuthService
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -18,12 +19,13 @@ class AuthController(
 ) {
 
     @PostMapping("/register")
-    fun registerUser(@RequestBody request: RegisterRequestDTO): AppUser {
-        return authService.register(
+    fun registerUser(@RequestBody request: RegisterRequestDTO): ResponseEntity<Void> {
+        authService.register(
             username = request.username,
             email = request.email,
             rawPassword = request.password
         )
+        return ResponseEntity.status(HttpStatus.CREATED).build()
     }
 
     @PostMapping("/login")
