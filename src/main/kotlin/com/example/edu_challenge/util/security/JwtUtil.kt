@@ -16,6 +16,7 @@ class JwtUtil(@Value("\${jwt.secret}") private val secret: String) {
     fun generateToken(user: AppUser): String {
         val token: String = Jwts.builder()
             .setSubject(user.email)
+            .claim("userId", user.id) // вот оно!
             .claim("role", user.role.name)
             .setIssuedAt(Date())
             .signWith(key, SignatureAlgorithm.HS256)

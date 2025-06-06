@@ -28,7 +28,8 @@ class AppUserService(
             createdDate = LocalDateTime.now(),
             level = appUser.level,
             exp = appUser.exp,
-            role = appUser.role
+            role = appUser.role,
+            quizzesSolved = appUser.quizzesSolved
         )
     }
 }

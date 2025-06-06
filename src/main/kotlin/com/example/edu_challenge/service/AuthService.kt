@@ -25,7 +25,8 @@ class AuthService(
             password = encryptedPassword,
             role = Role.USER,
             level = 1,
-            exp = 0
+            exp = 0,
+            quizzesSolved = 0
         )
 
         return appUserRepository.save(newUser)

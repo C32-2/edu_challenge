@@ -33,6 +33,8 @@ class AppUser(
     var level: Int,
 
     var exp: Int,
+
+    var quizzesSolved: Int
 ) {
     @PrePersist
     fun onCreate() {

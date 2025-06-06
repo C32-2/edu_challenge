@@ -9,5 +9,6 @@ data class UserProfileDTO(
     val createdDate: LocalDateTime?,
     val level: Int,
     val exp: Int,
-    val role: Role
+    val role: Role,
+    val quizzesSolved: Int
 )
