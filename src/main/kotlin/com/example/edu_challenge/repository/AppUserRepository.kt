@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository
 interface AppUserRepository : JpaRepository<AppUser, Long> {
     fun findByUsernameContainingIgnoreCase(usernamePart: String): List<AppUser>
     fun findByEmail(email: String): AppUser?
+    fun findTop30ByOrderByQuizzesSolvedDesc(): List<AppUser>
 }

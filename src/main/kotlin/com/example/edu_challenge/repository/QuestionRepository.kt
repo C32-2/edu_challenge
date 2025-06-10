@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface QuestionRepository : JpaRepository<Question, Long> {
-    fun findAllByTopicId(topicId: Long): List<Question>
+    fun findByTopicId(topicId: Long): List<Question>
+    fun findByTextContainingIgnoreCase(text: String): List<Question>
+    fun findByTopicIdAndTextContainingIgnoreCase(topicId: Long, text: String): List<Question>
 }

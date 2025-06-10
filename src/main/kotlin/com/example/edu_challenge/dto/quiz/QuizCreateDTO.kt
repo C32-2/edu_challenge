@@ -1,6 +1,6 @@
-package com.example.edu_challenge.dto
+package com.example.edu_challenge.dto.quiz
 
-data class CreateQuizDTO(
+data class QuizCreateRequest(
     val title: String,
     val topicId: Long,
     val questionIds: List<Long>

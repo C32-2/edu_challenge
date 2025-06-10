@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service
 @Service
 class TopicService(private val topicRepository: TopicRepository) {
 
-    fun getTopicById(id: Long): Topic? =
-        topicRepository.findById(id).orElse(null)
+    fun getTopicById(id: Long): Topic =
+        topicRepository.findById(id)
+            .orElseThrow { NoSuchElementException("Topic with id $id not found") }
 
     fun createTopic(topic: Topic): Topic =
         topicRepository.save(topic)

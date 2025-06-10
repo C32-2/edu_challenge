@@ -1,7 +1,7 @@
-package com.example.edu_challenge.dto
+package com.example.edu_challenge.dto.profile
 
-import java.time.LocalDateTime
 import com.example.edu_challenge.model.Role
+import java.time.LocalDateTime
 
 data class UserProfileDTO(
     val id: Long,

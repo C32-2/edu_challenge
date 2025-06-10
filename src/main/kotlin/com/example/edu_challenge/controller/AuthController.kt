@@ -1,8 +1,7 @@
 package com.example.edu_challenge.controller
 
-import com.example.edu_challenge.dto.LoginRequestDTO
-import com.example.edu_challenge.dto.RegisterRequestDTO
-import com.example.edu_challenge.model.AppUser
+import com.example.edu_challenge.dto.auth.LoginDTO
+import com.example.edu_challenge.dto.auth.RegisterDTO
 import com.example.edu_challenge.service.AuthService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -19,7 +18,7 @@ class AuthController(
 ) {
 
     @PostMapping("/register")
-    fun registerUser(@RequestBody request: RegisterRequestDTO): ResponseEntity<Void> {
+    fun registerUser(@RequestBody request: RegisterDTO): ResponseEntity<Void> {
         authService.register(
             username = request.username,
             email = request.email,
@@ -29,7 +28,7 @@ class AuthController(
     }
 
     @PostMapping("/login")
-    fun loginUser(@RequestBody request: LoginRequestDTO) : ResponseEntity<Map<String, String>> {
+    fun loginUser(@RequestBody request: LoginDTO) : ResponseEntity<Map<String, String>> {
         val token: String = authService.authenticate(request.email, request.password)
         return ResponseEntity.ok(mapOf("token" to token))
     }

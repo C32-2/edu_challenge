@@ -1,5 +1,6 @@
 package com.example.edu_challenge.model
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 
 @Entity
@@ -12,6 +13,7 @@ class Answer {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id", nullable = false)
+    @JsonBackReference
     lateinit var question: Question
 
     @Column(nullable = false, columnDefinition = "TEXT")

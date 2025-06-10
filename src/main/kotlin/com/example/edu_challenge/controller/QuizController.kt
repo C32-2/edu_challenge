@@ -1,7 +1,7 @@
 package com.example.edu_challenge.controller
 
-import com.example.edu_challenge.dto.QuizCreateRequest
-import com.example.edu_challenge.dto.QuizDTO
+import com.example.edu_challenge.dto.quiz.QuizCreateRequest
+import com.example.edu_challenge.dto.quiz.QuizDTO
 import com.example.edu_challenge.model.Quiz
 import com.example.edu_challenge.service.QuizService
 
@@ -20,17 +20,21 @@ class QuizController(private val quizService: QuizService) {
         return ResponseEntity.ok(created)
     }
 
-    @GetMapping
-    fun getAllQuizzes(): ResponseEntity<List<QuizDTO>> {
-        val quizzes = quizService.getAllQuizzes()
-        return ResponseEntity.ok(quizzes)
-    }
-
     @GetMapping("/{id}")
     fun getQuizById(@PathVariable id: Long): ResponseEntity<QuizDTO> {
         val quiz = quizService.getQuizById(id)
         return if (quiz != null) ResponseEntity.ok(quiz)
         else ResponseEntity.notFound().build()
+    }
+
+    @GetMapping
+    fun getQuizzes(@RequestParam(required = false) topicId: Long?): ResponseEntity<List<QuizDTO>> {
+        val quizzes = if (topicId != null)
+            quizService.getQuizzesByTopicId(topicId)
+        else
+            quizService.getAllQuizzes()
+
+        return ResponseEntity.ok(quizzes)
     }
 }
 

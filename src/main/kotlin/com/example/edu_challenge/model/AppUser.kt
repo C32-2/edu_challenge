@@ -30,18 +30,19 @@ class AppUser(
     @Column(name = "created_at", nullable = false, updatable = false)
     var createdAt: LocalDateTime? = null,
 
-    var level: Int,
+    var level: Int = 1,
 
-    var exp: Int,
+    var exp: Int = 0,
 
-    var quizzesSolved: Int
+    var quizzesSolved: Int = 0
 ) {
     @PrePersist
     fun onCreate() {
-        createdAt = LocalDateTime.now()
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now()
+        }
     }
 }
-
 enum class Role {
     USER, ADMIN, EDITOR
 }

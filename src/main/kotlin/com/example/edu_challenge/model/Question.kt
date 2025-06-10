@@ -1,12 +1,12 @@
 package com.example.edu_challenge.model
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import jakarta.persistence.*
-import java.time.LocalDateTime
 
 @Entity
 data class Question(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
     val text: String,
@@ -15,9 +15,7 @@ data class Question(
     @JoinColumn(name = "topic_id", nullable = false)
     val topic: Topic,
 
-    @ElementCollection
-    val options: List<String>,
-
-    val correctIndex: Int
+    @JsonManagedReference
+    @OneToMany(mappedBy = "question", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var answers: MutableList<Answer> = mutableListOf()
 )
-

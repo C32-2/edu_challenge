@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface QuizQuestionRepository : JpaRepository<QuizQuestion, Long> {
     fun findAllByQuizId(quizId: Long): List<QuizQuestion>
+    fun findByQuizIdOrderByPositionAsc(quizId: Long): List<QuizQuestion>
 }

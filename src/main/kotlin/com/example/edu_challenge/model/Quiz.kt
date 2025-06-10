@@ -3,9 +3,14 @@ package com.example.edu_challenge.model
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
+@Table(name = "quiz", uniqueConstraints = [
+    UniqueConstraint(columnNames = ["title"])
+])
 @Entity
 data class Quiz(
-    @Id @GeneratedValue val id: Long = 0,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0,
 
     val title: String,
 
@@ -15,5 +20,3 @@ data class Quiz(
 
     val createdAt: LocalDateTime = LocalDateTime.now()
 )
-
-

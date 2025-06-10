@@ -1,6 +1,6 @@
-package com.example.edu_challenge.dto
+package com.example.edu_challenge.dto.auth
 
-data class RegisterRequestDTO(
+data class RegisterDTO(
     val username: String,
     val email: String,
     val password: String
